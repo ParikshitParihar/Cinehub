@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { useSelector } from 'react-redux'
-import { FaAngleRight } from "react-icons/fa6";
-import { FaAngleLeft } from "react-icons/fa6";
+import { FaAngleRight,FaAngleLeft } from "react-icons/fa6";
 
 const BannerHome = () => {
 
@@ -41,9 +40,9 @@ const BannerHome = () => {
             <div className='flex min-h-full max-h-[95vh] overflow-hidden'>
                 {
                     bannerData.map((data, idx) => {
-                        console.log("Data", data);
+                        // console.log("Data", data);
                         return (
-                            <div className='min-w-full min-h-[450px] lg:min-h-full overflow-hidden relative group transition-all' style={{transform: `translateX(-${currentImage * 100}%)`}}>
+                            <div key={data.id+"bannerHome"+idx}className='min-w-full min-h-[450px] lg:min-h-full overflow-hidden relative group transition-all' style={{transform: `translateX(-${currentImage * 100}%)`}}>
                                 <div className='w-full h-full'>
                                     <img src={imageURL + data.backdrop_path} className='h-full w-full object-cover' />
                                 </div>

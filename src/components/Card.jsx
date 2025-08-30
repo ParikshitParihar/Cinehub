@@ -35,12 +35,14 @@
 import React from 'react'
 import { useSelector } from 'react-redux';
 import moment from 'moment';
+import {Link} from 'react-router-dom'
 
-const Card = ({ data, trending, index }) => {
+const Card = ({ data, trending, index, media_type }) => {
     const imageURL = useSelector(state => state.movieData.imageURL);
+    const mediaType = data.media_type ?? media_type
 
     return (
-        <div className="w-full min-w-[230px] max-w-[230px]">
+        <Link to={"/"+mediaType+"/"+data.id} className="w-full min-w-[230px] max-w-[230px] block hover:scale-110 transition-all">
             {/* Poster Card */}
             <div className="relative h-80 overflow-hidden rounded-lg">
                 <img
@@ -76,7 +78,7 @@ const Card = ({ data, trending, index }) => {
                     </p>
                 </div>
             </div>
-        </div>
+        </Link>
     );
 };
 
