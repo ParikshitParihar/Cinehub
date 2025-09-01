@@ -43,13 +43,27 @@ const Card = ({ data, trending, index, media_type }) => {
 
     return (
         <Link to={"/"+mediaType+"/"+data.id} className="w-full min-w-[230px] max-w-[230px] block hover:scale-110 transition-all">
+
+
             {/* Poster Card */}
             <div className="relative h-80 overflow-hidden rounded-lg">
-                <img
+                {/* <img
                     src={imageURL + data?.poster_path}
                     alt={data?.title || data?.name}
                     className="w-full h-full object-cover"
-                />
+                /> */}
+
+                {data?.poster_path ? (
+                    <img
+                        src={imageURL + data?.poster_path}
+                        alt={data?.title || data?.name}
+                        className="w-full h-full object-cover"
+                    />
+                ) : (
+                    <div className="bg-neutral-800 h-full w-full flex justify-center items-center text-white">
+                        No image found
+                    </div>
+                )}
 
                 {/* Trending Number */}
                 <div className='absolute top-4'>

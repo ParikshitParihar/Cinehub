@@ -4,7 +4,7 @@ import BannerHome from '../components/BannerHome'
 import Card from '../components/Card'
 import HorizontalScrollCard from '../components/HorizontalScrollCard'
 import axios from 'axios';
-import useFetch from '../components/hooks/useFetch'
+import useFetch from '../hooks/useFetch'
 
 const Home = () => {
   const trendingData = useSelector(state => state.movieData.bannerData);

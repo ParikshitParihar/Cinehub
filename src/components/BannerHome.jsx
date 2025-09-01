@@ -31,7 +31,7 @@ const BannerHome = () => {
         },4000)
 
         return ()=>clearInterval(interval)
-    },[bannerData, imageURL])
+    },[bannerData, imageURL, currentImage])
 
     // console.log("Banner Home", bannerData);
 
@@ -48,10 +48,10 @@ const BannerHome = () => {
                                 </div>
 
                                 <div className='absolute top-0 w-full h-full hidden items-center justify-between px-4 group-hover:lg:flex'>
-                                    <button onClick={handlePrevious} className='bg-white p-1 rounded-full text-xl z-10 text-black'>
+                                    <button onClick={handlePrevious} className='bg-white p-1 rounded-full text-xl z-10 text-black cursor-pointer'>
                                         <FaAngleLeft/>
                                     </button>
-                                    <button onClick={handleNext} className='bg-white p-1 rounded-full text-xl z-10 text-black'>
+                                    <button onClick={handleNext} className='bg-white p-1 rounded-full text-xl z-10 text-black cursor-pointer'>
                                         <FaAngleRight/>
                                     </button>
                                 </div>
