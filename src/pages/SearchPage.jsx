@@ -66,6 +66,7 @@ const SearchPage = () => {
   const [page, setPage] = useState(1);
   const navigate = useNavigate();
   const query = location?.search?.slice(3)
+   const decodedQuery = decodeURIComponent(query || "");
 
   const fetchData = async () => {
     try {
@@ -97,7 +98,7 @@ const SearchPage = () => {
   }
 
   useEffect(() => {
-    if(query){
+    if (query) {
       fetchData()
     }
   }, [page])
@@ -111,7 +112,7 @@ const SearchPage = () => {
 
       <div className='lg:hidden my-2 mx-1 sticky top-[70px] z-30'>
         <input type="text" placeholder='Search here...' onChange={(e) => navigate(`/search?q=${e.target.value}`)}
-        value={query?.split("%20")?.join(" ")}
+          value={query?.split("%20")?.join(" ")}
           className='px-4 py-1 text-lg w-full bg-white rounded-full text-neutral-900'
         />
       </div>
@@ -120,16 +121,21 @@ const SearchPage = () => {
         <h3 className='capitalize text-lg lg:text-xl font-semibold my-3'>
           Search Results
         </h3>
-
-        <div className='grid grid-cols-[repeat(auto-fit,230px)] gap-6 justify-center lg:justify-start'>
-          {data.map((searchData) => (
-            <Card
-              data={searchData}
-              key={searchData.id + 'search'}
-              media_type={searchData.media_type}
-            />
-          ))}
-        </div>
+{data.length === 0 ? (
+          <p className="text-center text-neutral-400 text-lg my-10">
+            No results found for <span className="font-semibold">"{decodedQuery}"</span>
+          </p>
+        ) : (
+          <div className="grid grid-cols-[repeat(auto-fit,230px)] gap-6 justify-center lg:justify-start">
+            {data.map((searchData) => (
+              <Card
+                data={searchData}
+                key={searchData.id + 'search'}
+                media_type={searchData.media_type}
+              />
+            ))}
+          </div>
+        )}
       </div>
     </div>
   );
