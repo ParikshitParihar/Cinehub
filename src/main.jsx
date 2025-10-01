@@ -7,6 +7,7 @@ import router from './routes/index.jsx'
 import axios from 'axios';
 import {Provider} from 'react-redux'
 import { store } from './store/store'
+import { AuthProvider } from './userAuth/AuthContext';
 
 axios.defaults.baseURL = "https://api.themoviedb.org/3"
 axios.defaults.headers.common['Authorization'] = `Bearer ${import.meta.env.VITE_ACCESS_TOKEN}`
@@ -14,8 +15,9 @@ axios.defaults.headers.common['Authorization'] = `Bearer ${import.meta.env.VITE_
 createRoot(document.getElementById('root')).render(
   // <StrictMode>
   <Provider store={store}>
-      <RouterProvider router={router}/>
-       {/* <App /> */}
+    <AuthProvider>               
+      <RouterProvider router={router} />
+    </AuthProvider>
   </Provider>
     
   // </StrictMode>,

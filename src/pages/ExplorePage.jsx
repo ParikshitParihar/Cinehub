@@ -4,6 +4,7 @@ import { useParams } from 'react-router-dom'
 import Card from '../components/Card';
 
 const ExplorePage = () => {
+  const { type } = useParams();
   const params = useParams();
   const [pageNo, setPageNo] = useState(1);
   const [data, setData] = useState([]);
@@ -62,7 +63,7 @@ const ExplorePage = () => {
               return (
                 <Card
                   data={exploreData}
-                  key={`${exploreData.id}-${idx}`}   // ✅ unique
+                  key={`${exploreData.id}-${idx}`}  
                   media_type={params.explore}
                 />
               )
